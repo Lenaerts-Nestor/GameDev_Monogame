@@ -11,16 +11,19 @@ namespace Monogame_1
     {
         
         
-        private Animation playeranimation;
+        private Animation[] playeranimation;
         private MovementManager Movement;
-       
+        public CurrentAnimation currentAnimation;
 
-        public Player(Texture2D sprite, IInputReader inputReader)
+        public Player(Texture2D spriteIdle, Texture2D spriteRun, IInputReader inputReader  )
         {
-            spritesheet = sprite;
-            Speed = new Vector2();
-            
-            playeranimation = new Animation(spritesheet);
+            spritesheet = spriteIdle;
+            speed = new Vector2();
+
+            playeranimation = new Animation[2];
+            playeranimation[0] = new Animation(spriteIdle);
+            playeranimation[1] = new Animation(spriteRun);
+
             this.inputReader = inputReader;
             Movement = new MovementManager();
 
@@ -28,13 +31,20 @@ namespace Monogame_1
         }
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            playeranimation.Draw(spriteBatch, this.Position, gameTime);
+            Movement.Draw(this, playeranimation, spriteBatch, position,gameTime);
+            //playeranimation.Draw(spriteBatch, this.position, gameTime);
             //spriteBatch.Draw(spritesheet, this.position, Color.White);
         }
 
         public override void Update()
         {
             Movement.Move(this);
+            
+        }
+
+        public void DrawMovement()
+        {
+            
         }
         
     }

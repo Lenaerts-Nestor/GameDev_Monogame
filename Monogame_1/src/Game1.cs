@@ -10,7 +10,7 @@ namespace Monogame_1.src
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         //tijdelijk =>
-        private Texture2D playersprite;
+     
         private Player player;
 
        
@@ -33,9 +33,11 @@ namespace Monogame_1.src
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             //path van Agent Mike Idle 
-            playersprite = Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Running (32 x 32)");
-            player = new Player(playersprite, new KeyboardReader());
-           
+
+            player = new Player(
+                Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Idle (32 x 32)")
+               ,Content.Load<Texture2D>("Sprite Pack 4\\1 - Agent_Mike_Running (32 x 32)")
+               ,new KeyboardReader());
         }
         
         protected override void Update(GameTime gameTime)

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Monogame_1.Interfaces;
+using SharpDX.Direct3D9;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,26 +14,26 @@ namespace Monogame_1.MovementSection
 {
     public class KeyboardReader : IInputReader
     {
-       
-        public bool IsDestinationInput { get; }
-
-        
-        public Vector2 ReadInput()
+        public int ReadInput()
         {
             KeyboardState statekey = Keyboard.GetState();
-            Vector2 NewPosition = Vector2.Zero;
-            //dit gaat default zijn. dus als er geen input word gegeven blijft die idle ==>
-         
+            
             if (statekey.IsKeyDown(Keys.A))
             {
-                NewPosition.X -= 2;
-              
+                return 65;
+                
             }
             else if (statekey.IsKeyDown(Keys.D))
             {
-                NewPosition.X += 2;
+                return 68;
             }
-            return NewPosition;
+            else
+            {
+                return -1;
+            }
+            
         }
+
+       
     }
 }

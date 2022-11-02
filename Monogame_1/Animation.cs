@@ -29,7 +29,10 @@ namespace Monogame_1
             {
                 //deze null naast counter is de ROWS als je een sheet hebt
                 var rect = new Rectangle(32 * counter, row, 32, 32);
-                spriteBatch.Draw(spritesheet, position, rect, Color.White);
+                //als de sprite te klein is , maak het gewenste size aan
+                var gewensteSize = new Rectangle((int)position.X,(int)position.Y, 64,64);
+                spriteBatch.Draw(spritesheet, gewensteSize, rect, Color.White);
+                //spriteBatch.Draw(spritesheet, position, rect, Color.White);
                 TslFrame += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
                 if (TslFrame > miliSecPerFrame)

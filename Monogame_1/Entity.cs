@@ -11,11 +11,19 @@ namespace Monogame_1
         public Texture2D spritesheet;
         
         
-        public Vector2 Position { get; set; }
-        public Vector2 Speed { get; set; }
+        public Vector2 position { get; set; }
+        public Vector2 speed { get; set; }
         public IInputReader inputReader { get; set; }
+        public CurrentAnimation currentAnimation { get; set; }
 
         public abstract void Update();
-        public abstract void Draw(SpriteBatch spriteBatch, GameTime gameTime);
+        public abstract void Draw(SpriteBatch spriteBatchIdle, GameTime gameTime);
+
+
+
+       
+         
+         
+      
     }
 }

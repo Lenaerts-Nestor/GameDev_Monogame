@@ -14,8 +14,9 @@ namespace Monogame_1.Interfaces
         //deze klasse houd zich bezig om de input te lezen
         //we lezen de input van de PLAYER -->
 
-        Vector2 ReadInput();
+        int ReadInput();
+    
   
-        public bool IsDestinationInput { get; }
+     
     }
 }
