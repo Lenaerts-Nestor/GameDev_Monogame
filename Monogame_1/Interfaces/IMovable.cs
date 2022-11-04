@@ -11,7 +11,7 @@ namespace Monogame_1.Interfaces
     public interface IMovable
     {
         public Vector2 position { get; set; }
-        public Vector2 speed { get; set; }
+        public int speed { get; set; }
         public IInputReader inputReader { get; set; }
 
         public CurrentAnimation currentAnimation { get; set; }

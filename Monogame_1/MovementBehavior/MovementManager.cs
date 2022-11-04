@@ -14,24 +14,40 @@ namespace Monogame_1.MovementBehavior
     public class MovementManager
     {
 
-        KeyboardReader PressedKeys;
+        
         //deze klasse houd zich bezich om de bewegingen te doen =>
+        SpriteEffects s = SpriteEffects.None;
+       
         public void Move(IMovable movable)
         {
             var pressedKeyValue = movable.inputReader.ReadInput();
             Vector2 newPosition = Vector2.Zero;
+
+           
             //update de positie
             if (pressedKeyValue == 65 || pressedKeyValue == 68)
             {
-                movable.currentAnimation = CurrentAnimation.Run;
-                if (pressedKeyValue == 68)
+               
+                if (pressedKeyValue == 65) //dit is A
                 {
-                    newPosition.X += 2;
-                    
+                    movable.currentAnimation = CurrentAnimation.Run;
+                    if (s == SpriteEffects.None)
+                    {
+                        s = SpriteEffects.FlipHorizontally;
+                    }
+                    newPosition.X += movable.speed;
+
                 }
                 else
                 {
-                    newPosition.X -= 2;
+                    
+                    movable.currentAnimation = CurrentAnimation.Run;
+                    if (s == SpriteEffects.FlipHorizontally)
+                    {
+                        s = SpriteEffects.None;
+                    }
+                    newPosition.X -= movable.speed;
+
                 }
             }
             else 
@@ -48,12 +64,12 @@ namespace Monogame_1.MovementBehavior
             {   
                 case CurrentAnimation.Idle:
                     Move(movable);
-                    entityArray[0].Draw(spriteBatch, position, gameTime);
+                    entityArray[0].Draw(spriteBatch, position, gameTime,s );
                     
                     break;
                 case CurrentAnimation.Run:
                     Move(movable);
-                    entityArray[1].Draw(spriteBatch, position, gameTime);
+                    entityArray[1].Draw(spriteBatch, position, gameTime,s);
                  
                     break;
                 default:

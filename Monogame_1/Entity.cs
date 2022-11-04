@@ -12,10 +12,10 @@ namespace Monogame_1
         
         
         public Vector2 position { get; set; }
-        public Vector2 speed { get; set; }
+        public int speed { get; set; }
         public IInputReader inputReader { get; set; }
         public CurrentAnimation currentAnimation { get; set; }
-
+        
         public abstract void Update();
         public abstract void Draw(SpriteBatch spriteBatchIdle, GameTime gameTime);
 

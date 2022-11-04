@@ -18,7 +18,7 @@ namespace Monogame_1
         public Player(Texture2D spriteIdle, Texture2D spriteRun, IInputReader inputReader  )
         {
             spritesheet = spriteIdle;
-            speed = new Vector2();
+            speed = 2;
 
             playeranimation = new Animation[2];
             playeranimation[0] = new Animation(spriteIdle);

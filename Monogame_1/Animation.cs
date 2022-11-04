@@ -23,7 +23,7 @@ namespace Monogame_1
             this.spritesheet = spritesheet;
             frames = (int)(spritesheet.Width / width);
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, GameTime gameTime, float miliSecPerFrame= 150)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position, GameTime gameTime, SpriteEffects leftorRight, float miliSecPerFrame = 150)
         {
             if (counter < frames)
             {
@@ -31,7 +31,7 @@ namespace Monogame_1
                 var rect = new Rectangle(32 * counter, row, 32, 32);
                 //als de sprite te klein is , maak het gewenste size aan
                 var gewensteSize = new Rectangle((int)position.X,(int)position.Y, 64,64);
-                spriteBatch.Draw(spritesheet, gewensteSize, rect, Color.White);
+                spriteBatch.Draw(spritesheet, gewensteSize, rect,Color.White, 0f, new Vector2(position.X, position.Y), leftorRight, 0f);
                 //spriteBatch.Draw(spritesheet, position, rect, Color.White);
                 TslFrame += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 

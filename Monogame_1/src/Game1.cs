@@ -13,8 +13,6 @@ namespace Monogame_1.src
      
         private Player player;
 
-       
-
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
