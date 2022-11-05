@@ -32,7 +32,7 @@ namespace Monogame_1
         }
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            Movement.Draw(this, playeranimation, spriteBatch, position,gameTime);
+            Movement.DrawPlayerMovement(this, playeranimation, spriteBatch, position,gameTime);
             //playeranimation.Draw(spriteBatch, this.position, gameTime);
             //spriteBatch.Draw(spritesheet, this.position, Color.White);
         }

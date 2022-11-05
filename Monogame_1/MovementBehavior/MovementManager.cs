@@ -15,12 +15,10 @@ namespace Monogame_1.MovementBehavior
     {
 
         
-        //deze klasse houd zich bezich om de bewegingen te doen =>
-        
-       
-        public void PlayerMove(IMovable movable)
+        //deze klasse houd zich bezich om de bewegingen te doen en tonen =>
+        public void PlayerMove(IMovable playerMovement)
         {
-            var pressedKeyValue = movable.inputReader.ReadInput();
+            var pressedKeyValue = playerMovement.inputReader.ReadInput();
             Vector2 newPosition = Vector2.Zero;
 
            
@@ -30,38 +28,38 @@ namespace Monogame_1.MovementBehavior
                
                 if (pressedKeyValue == 65) //dit is A
                 {
-                    movable.currentAnimation = CurrentAnimation.Run;
-                    if (movable.directionMovement == SpriteEffects.None)
+                    playerMovement.currentAnimation = CurrentAnimation.Run;
+                    if (playerMovement.directionMovement == SpriteEffects.None)
                     {
-                        movable.directionMovement = SpriteEffects.FlipHorizontally;
+                        playerMovement.directionMovement = SpriteEffects.FlipHorizontally;
                     }
-                    newPosition.X += movable.speed;
+                    newPosition.X += playerMovement.speed;
 
                 }
                 else
                 {
                     
-                    movable.currentAnimation = CurrentAnimation.Run;
-                    if (movable.directionMovement == SpriteEffects.FlipHorizontally)
+                    playerMovement.currentAnimation = CurrentAnimation.Run;
+                    if (playerMovement.directionMovement == SpriteEffects.FlipHorizontally)
                     {
-                        movable.directionMovement = SpriteEffects.None;
+                        playerMovement.directionMovement = SpriteEffects.None;
                     }
-                    newPosition.X -= movable.speed;
+                    newPosition.X -= playerMovement.speed;
 
                 }
             }
             else 
             {
-                movable.currentAnimation = CurrentAnimation.Idle;
+                playerMovement.currentAnimation = CurrentAnimation.Idle;
             }
-            movable.position = movable.position + newPosition;
+            playerMovement.position = playerMovement.position + newPosition;
             
 
         }
 
 
         //draw de movement ==>
-        public void Draw(IMovable movable, Animation[] entityArray, SpriteBatch spriteBatch, Vector2 position, GameTime gameTime)
+        public void DrawPlayerMovement(IMovable movable, Animation[] entityArray, SpriteBatch spriteBatch, Vector2 position, GameTime gameTime)
         {
             switch (movable.currentAnimation)
             {   
