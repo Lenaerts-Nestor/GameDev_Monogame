@@ -16,9 +16,9 @@ namespace Monogame_1.MovementBehavior
 
         
         //deze klasse houd zich bezich om de bewegingen te doen =>
-        SpriteEffects s = SpriteEffects.None;
+        
        
-        public void Move(IMovable movable)
+        public void PlayerMove(IMovable movable)
         {
             var pressedKeyValue = movable.inputReader.ReadInput();
             Vector2 newPosition = Vector2.Zero;
@@ -31,9 +31,9 @@ namespace Monogame_1.MovementBehavior
                 if (pressedKeyValue == 65) //dit is A
                 {
                     movable.currentAnimation = CurrentAnimation.Run;
-                    if (s == SpriteEffects.None)
+                    if (movable.directionMovement == SpriteEffects.None)
                     {
-                        s = SpriteEffects.FlipHorizontally;
+                        movable.directionMovement = SpriteEffects.FlipHorizontally;
                     }
                     newPosition.X += movable.speed;
 
@@ -42,9 +42,9 @@ namespace Monogame_1.MovementBehavior
                 {
                     
                     movable.currentAnimation = CurrentAnimation.Run;
-                    if (s == SpriteEffects.FlipHorizontally)
+                    if (movable.directionMovement == SpriteEffects.FlipHorizontally)
                     {
-                        s = SpriteEffects.None;
+                        movable.directionMovement = SpriteEffects.None;
                     }
                     newPosition.X -= movable.speed;
 
@@ -58,18 +58,21 @@ namespace Monogame_1.MovementBehavior
             
 
         }
+
+
+        //draw de movement ==>
         public void Draw(IMovable movable, Animation[] entityArray, SpriteBatch spriteBatch, Vector2 position, GameTime gameTime)
         {
             switch (movable.currentAnimation)
             {   
                 case CurrentAnimation.Idle:
-                    Move(movable);
-                    entityArray[0].Draw(spriteBatch, position, gameTime,s );
+                    PlayerMove(movable);
+                    entityArray[0].Draw(spriteBatch, position, gameTime, movable.directionMovement);
                     
                     break;
                 case CurrentAnimation.Run:
-                    Move(movable);
-                    entityArray[1].Draw(spriteBatch, position, gameTime,s);
+                    PlayerMove(movable);
+                    entityArray[1].Draw(spriteBatch, position, gameTime, movable.directionMovement);
                  
                     break;
                 default:

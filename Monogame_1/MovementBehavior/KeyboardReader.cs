@@ -20,6 +20,7 @@ namespace Monogame_1.MovementSection
             
             if (statekey.IsKeyDown(Keys.A))
             {
+                //TODO: vind een bbetere manier om de input te lezen
                 return 65;
                 
             }

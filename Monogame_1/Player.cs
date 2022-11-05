@@ -19,6 +19,7 @@ namespace Monogame_1
         {
             spritesheet = spriteIdle;
             speed = 2;
+          
 
             playeranimation = new Animation[2];
             playeranimation[0] = new Animation(spriteIdle);
@@ -38,7 +39,7 @@ namespace Monogame_1
 
         public override void Update()
         {
-            Movement.Move(this);
+            Movement.PlayerMove(this);
             
         }
 
